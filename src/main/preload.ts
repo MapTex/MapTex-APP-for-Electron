@@ -19,5 +19,14 @@ contextBridge.exposeInMainWorld('electron', {
     once(channel: Channels, func: (...args: unknown[]) => void) {
       ipcRenderer.once(channel, (_event, ...args) => func(...args));
     },
+    getTileSaveFolderPath() {
+      return ipcRenderer.invoke('open-directory-dialog');
+    },
+    getTileInputFolderPath() {
+      return ipcRenderer.invoke('open-tile-input-dialog');
+    },
+    excuteTileCombine() {
+      return ipcRenderer.invoke('excute-tile-combin');
+    },
   },
 });

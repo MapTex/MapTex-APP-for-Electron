@@ -13,6 +13,9 @@ import { app, BrowserWindow, shell, ipcMain } from 'electron';
 import { autoUpdater } from 'electron-updater';
 import log from 'electron-log';
 import MenuBuilder from './menu';
+import getTileSaveFolderDialogPath from './layout/dialog/tilesavefolder';
+import getTileInputFolderDialogPath from './layout/dialog/tileinputfolder';
+import excuteTileCombine from './command/excuteTileCombine';
 import { resolveHtmlPath } from './util';
 
 class AppUpdater {
@@ -30,6 +33,10 @@ ipcMain.on('ipc-example', async (event, arg) => {
   console.log(msgTemplate(arg));
   event.reply('ipc-example', msgTemplate('pong'));
 });
+
+ipcMain.handle('open-directory-dialog', getTileSaveFolderDialogPath);
+ipcMain.handle('open-tile-input-dialog', getTileInputFolderDialogPath);
+ipcMain.handle('excute-tile-combine', excuteTileCombine);
 
 if (process.env.NODE_ENV === 'production') {
   const sourceMapSupport = require('source-map-support');

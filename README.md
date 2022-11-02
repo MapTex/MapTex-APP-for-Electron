@@ -157,3 +157,18 @@ MIT © [Electron React Boilerplate](https://github.com/electron-react-boilerplat
 [github-tag-url]: https://github.com/electron-react-boilerplate/electron-react-boilerplate/releases/latest
 [stackoverflow-img]: https://img.shields.io/badge/stackoverflow-electron_react_boilerplate-blue.svg
 [stackoverflow-url]: https://stackoverflow.com/questions/tagged/electron-react-boilerplate
+
+## Error
+### canvas
+``` sh
+# https://github.com/Automattic/node-canvas/issues/1499
+cd node_modules/canvas
+npx node-gyp rebuild
+```
+
+``` sh
+# https://github.com/onmyway133/blog/issues/69
+npm install --save-dev electron-rebuild
+npm install canvas
+./node_modules/.bin/electron-rebuild
+```

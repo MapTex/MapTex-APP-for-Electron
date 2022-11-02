@@ -34,6 +34,7 @@
   ],
   "main": "./src/main/main.ts",
   "scripts": {
+    "prestart1": "npm-link-shared ./node_modules/@maptex/react-ui/node_modules . react",
     "build": "concurrently \"npm run build:main\" \"npm run build:renderer\"",
     "build:main": "cross-env NODE_ENV=production TS_NODE_TRANSPILE_ONLY=true webpack --config ./.erb/configs/webpack.config.main.prod.ts",
     "build:renderer": "cross-env NODE_ENV=production TS_NODE_TRANSPILE_ONLY=true webpack --config ./.erb/configs/webpack.config.renderer.prod.ts",
@@ -109,9 +110,14 @@
     }
   },
   "dependencies": {
+    "@mapbox/mr-ui": "^2.1.1",
+    "@maptex/react-ui1": "file:../MapTex-API-for-React-UI/pkg",
     "electron-debug": "^3.2.0",
     "electron-log": "^4.4.8",
     "electron-updater": "^5.2.3",
+    "leaflet": "^1.9.2",
+    "leaflet-draw": "^1.0.4",
+    "ol": "^7.1.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.3.0"
@@ -165,6 +171,7 @@
     "jest-environment-jsdom": "^28.1.3",
     "lint-staged": "^13.0.3",
     "mini-css-extract-plugin": "^2.6.1",
+    "npm-link-shared": "^0.5.6",
     "prettier": "^2.7.1",
     "react-refresh": "^0.14.0",
     "react-test-renderer": "^18.2.0",

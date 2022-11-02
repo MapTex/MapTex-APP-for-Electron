@@ -1,49 +1,24 @@
 import { MemoryRouter as Router, Routes, Route } from 'react-router-dom';
-import icon from '../../assets/icon.svg';
-import './App.css';
+import Home from './layout/Home';
+import Tile from './layout/Tile';
+import TileDownload from './components/download/TileDownload';
+import TileCombine from './components/combine/TileCombine';
 
-const Hello = () => {
-  return (
-    <div>
-      <div className="Hello">
-        <img width="200" alt="icon" src={icon} />
-      </div>
-      <h1>electron-react-boilerplate</h1>
-      <div className="Hello">
-        <a
-          href="https://electron-react-boilerplate.js.org/"
-          target="_blank"
-          rel="noreferrer"
-        >
-          <button type="button">
-            <span role="img" aria-label="books">
-              📚
-            </span>
-            Read our docs
-          </button>
-        </a>
-        <a
-          href="https://github.com/sponsors/electron-react-boilerplate"
-          target="_blank"
-          rel="noreferrer"
-        >
-          <button type="button">
-            <span role="img" aria-label="folded hands">
-              🙏
-            </span>
-            Donate
-          </button>
-        </a>
-      </div>
-    </div>
-  );
-};
+import './App.css';
+import './style/assembly/assembly.min.css';
+import './style/assembly/assembly.js';
+import 'ol/ol.css';
 
 export default function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Hello />} />
+        <Route path="/" element={<Home />} />
+        <Route path="/tile" element={<Tile />}>
+          <Route path="folderdownload" element={<TileDownload />} />
+          <Route path="folderexplorer" element={<span>文件夹瓦片浏览</span>} />
+          <Route path="foldercombine" element={<TileCombine />} />a
+        </Route>
       </Routes>
     </Router>
   );
